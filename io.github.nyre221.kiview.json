@@ -1,145 +1,147 @@
 {
-   "id": "io.github.nyre221.kiview",
-   "runtime": "org.kde.Platform",
-   "runtime-version": "6.6",
-   "sdk": "org.kde.Sdk",
-   "base": "io.qt.qtwebengine.BaseApp",
-   "base-version": "6.6",
-   "command": "kiview",
-   "finish-args": [
-      "--share=ipc",
-      "--device=dri",
-      "--socket=fallback-x11",
-      "--socket=wayland",
-      "--env=QML_IMPORT_PATH=/app/qml",
-      "--socket=pulseaudio",
-      "--filesystem=host:ro",
-      "--talk-name=org.kde.klipper",
-      "--talk-name=org.kde.*"
-   ],
-   "cleanup-commands": [
-      "/app/cleanup-BaseApp.sh"
-   ],
-   "modules": [
-      {
-         "buildsystem": "cmake-ninja",
-         "name": "kiview",
-         "sources": [
-            {
-               "type": "git",
-               "url": "https://github.com/Nyre221/Kiview.git",
-               "commit": "e5d958eb21eab7cafafb2f526f951df38cf157c6"
-            }
-         ]
-      },
-      {
-         "name": "unrar",
-         "no-autogen": true,
-         "build-options": {
-            "strip": true
-         },
-         "make-install-args": [
-            "DESTDIR=$(FLATPAK_DEST)"
-         ],
-         "sources": [
-            {
-               "type": "archive",
-               "url": "https://www.rarlab.com/rar/unrarsrc-6.2.12.tar.gz",
-               "sha256": "a008b5f949bca9bb4ffa1bebbfc8b3c14b89df10a10354809b845232d5f582e5",
-               "x-checker-data": {
-                  "type": "anitya",
-                  "project-id": 13306,
-                  "url-template": "https://www.rarlab.com/rar/unrarsrc-$version.tar.gz"
-               }
-            }
-         ]
-      },
-      {
-         "name": "wl-clipboard",
-         "buildsystem": "simple",
-         "build-commands": [
-            "meson setup build; cd ./build ; ninja ;DESTDIR=/app meson install",
-            "ln -s /app/usr/local/bin/wl-copy /app/bin"
-         ],
-         "sources": [
-            {
-               "type": "archive",
-               "url": "https://github.com/bugaevc/wl-clipboard/archive/refs/tags/v2.2.1.tar.gz",
-               "sha256": "6eb8081207fb5581d1d82c4bcd9587205a31a3d47bea3ebeb7f41aa1143783eb"
-            }
-         ]
-      },
-      {
-         "name": "libXmu",
-         "sources": [
-            {
-               "type": "archive",
-               "url": "https://gitlab.freedesktop.org/xorg/lib/libxmu/-/archive/libXmu-1.2.0/libxmu-libXmu-1.2.0.tar.gz",
-               "sha256": "5750b5dbf1f3355ddcfe9c70cb1023a64b16ce9c4210196ccaff66b24d402de9"
-            }
-         ]
-      },
-      {
-         "name": "xclip",
-         "sources": [
-            {
-               "type": "archive",
-               "url": "https://github.com/astrand/xclip/archive/refs/tags/0.13.tar.gz",
-               "sha256": "ca5b8804e3c910a66423a882d79bf3c9450b875ac8528791fb60ec9de667f758"
-            }
-         ]
-      },
-      {
-         "name": "avahi",
-         "config-opts": [
-            "--disable-libdaemon",
-            "--enable-compat-libdns_sd",
-            "--disable-python",
-            "--disable-doxygen-doc",
-            "--with-distro=none",
-            "--disable-glib",
-            "--disable-gobject",
-            "--disable-introspection",
-            "--disable-gtk",
-            "--disable-gtk3",
-            "--disable-qt3",
-            "--disable-qt4",
-            "--disable-qt5",
-            "--disable-mono",
-            "--disable-monodoc",
-            "--disable-manpages",
-            "--disable-xmltoman",
-            "--disable-utils"
-         ],
-         "cleanup": [
-            "/bin"
-         ],
-         "sources": [
-            {
-               "type": "archive",
-               "url": "https://github.com/avahi/avahi/releases/download/v0.8/avahi-0.8.tar.gz",
-               "sha256": "060309d7a333d38d951bc27598c677af1796934dbd98e1024e7ad8de798fedda"
-            }
-         ]
-      },
-      {
-         "name": "libreoffice",
-         "buildsystem": "simple",
-         "build-commands": [
-            "chmod +x ./LibreOffice.AppImage",
-            "./LibreOffice.AppImage --appimage-extract",
-            "mv ./squashfs-root /app/bin/libreoffice-dir",
-            "ln -s /app/bin/libreoffice-dir/AppRun /app/bin/libreoffice"
-         ],
-         "sources": [
-            {
-               "type": "file",
-               "url": "https://appimages.libreitalia.org/LibreOffice-24.2.0.3.basic-x86_64.AppImage",
-               "sha256": "c8ca641329bcfff31dc16f0dc945728afeb6feb0425bb4096bcac2759413afc4",
-               "dest-filename": "LibreOffice.AppImage",
-               "only-arches": ["x86_64"]
-            }
-         ]
-      }
-   ]
+    "id": "io.github.nyre221.kiview",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "6.6",
+    "sdk": "org.kde.Sdk",
+    "base": "io.qt.qtwebengine.BaseApp",
+    "base-version": "6.6",
+    "command": "kiview",
+    "finish-args": [
+        "--share=ipc",
+        "--device=dri",
+        "--socket=fallback-x11",
+        "--socket=wayland",
+        "--env=QML_IMPORT_PATH=/app/qml",
+        "--socket=pulseaudio",
+        "--filesystem=host:ro",
+        "--talk-name=org.kde.klipper",
+        "--talk-name=org.kde.*"
+    ],
+    "cleanup-commands": [
+        "/app/cleanup-BaseApp.sh"
+    ],
+    "modules": [
+        {
+            "buildsystem": "cmake-ninja",
+            "name": "kiview",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/Nyre221/Kiview.git",
+                    "commit": "e5d958eb21eab7cafafb2f526f951df38cf157c6"
+                }
+            ]
+        },
+        {
+            "name": "unrar",
+            "no-autogen": true,
+            "build-options": {
+                "strip": true
+            },
+            "make-install-args": [
+                "DESTDIR=$(FLATPAK_DEST)"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.rarlab.com/rar/unrarsrc-7.1.4.tar.gz",
+                    "sha256": "7f3decbcbf71704ffb3726b9c4e2222f055953310042a9ba0f96b3fb2209971f",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 13306,
+                        "url-template": "https://www.rarlab.com/rar/unrarsrc-$version.tar.gz"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "wl-clipboard",
+            "buildsystem": "simple",
+            "build-commands": [
+                "meson setup build; cd ./build ; ninja ;DESTDIR=/app meson install",
+                "ln -s /app/usr/local/bin/wl-copy /app/bin"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/bugaevc/wl-clipboard/archive/refs/tags/v2.2.1.tar.gz",
+                    "sha256": "6eb8081207fb5581d1d82c4bcd9587205a31a3d47bea3ebeb7f41aa1143783eb"
+                }
+            ]
+        },
+        {
+            "name": "libXmu",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://gitlab.freedesktop.org/xorg/lib/libxmu/-/archive/libXmu-1.2.0/libxmu-libXmu-1.2.0.tar.gz",
+                    "sha256": "5750b5dbf1f3355ddcfe9c70cb1023a64b16ce9c4210196ccaff66b24d402de9"
+                }
+            ]
+        },
+        {
+            "name": "xclip",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/astrand/xclip/archive/refs/tags/0.13.tar.gz",
+                    "sha256": "ca5b8804e3c910a66423a882d79bf3c9450b875ac8528791fb60ec9de667f758"
+                }
+            ]
+        },
+        {
+            "name": "avahi",
+            "config-opts": [
+                "--disable-libdaemon",
+                "--enable-compat-libdns_sd",
+                "--disable-python",
+                "--disable-doxygen-doc",
+                "--with-distro=none",
+                "--disable-glib",
+                "--disable-gobject",
+                "--disable-introspection",
+                "--disable-gtk",
+                "--disable-gtk3",
+                "--disable-qt3",
+                "--disable-qt4",
+                "--disable-qt5",
+                "--disable-mono",
+                "--disable-monodoc",
+                "--disable-manpages",
+                "--disable-xmltoman",
+                "--disable-utils"
+            ],
+            "cleanup": [
+                "/bin"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/avahi/avahi/releases/download/v0.8/avahi-0.8.tar.gz",
+                    "sha256": "060309d7a333d38d951bc27598c677af1796934dbd98e1024e7ad8de798fedda"
+                }
+            ]
+        },
+        {
+            "name": "libreoffice",
+            "buildsystem": "simple",
+            "build-commands": [
+                "chmod +x ./LibreOffice.AppImage",
+                "./LibreOffice.AppImage --appimage-extract",
+                "mv ./squashfs-root /app/bin/libreoffice-dir",
+                "ln -s /app/bin/libreoffice-dir/AppRun /app/bin/libreoffice"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://appimages.libreitalia.org/LibreOffice-24.2.0.3.basic-x86_64.AppImage",
+                    "sha256": "c8ca641329bcfff31dc16f0dc945728afeb6feb0425bb4096bcac2759413afc4",
+                    "dest-filename": "LibreOffice.AppImage",
+                    "only-arches": [
+                        "x86_64"
+                    ]
+                }
+            ]
+        }
+    ]
 }
