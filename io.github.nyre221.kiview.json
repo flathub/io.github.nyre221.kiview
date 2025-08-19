@@ -47,6 +47,13 @@
                   "project-id": 243110,
                   "url-template": "https://gitlab.com/bgermann/unrar-free/-/archive/$version/unrar-free-$version.tar.gz"
                }
+            },
+            {
+               "type": "script",
+               "dest-filename": "autogen.sh",
+               "commands": [
+                  "autoreconf -vfi"
+               ]
             }
          ]
       },
@@ -133,7 +140,9 @@
                "url": "https://appimages.libreitalia.org/LibreOffice-25.2.5.2.basic-x86_64.AppImage",
                "sha256": "bf724fd6ffff416bc8e210075a0b500509be89426d8c65528408bc29dea3e09d",
                "dest-filename": "LibreOffice.AppImage",
-               "only-arches": ["x86_64"]
+               "only-arches": [
+                  "x86_64"
+               ]
             }
          ]
       }
