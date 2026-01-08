@@ -1,10 +1,10 @@
 {
    "id": "io.github.nyre221.kiview",
    "runtime": "org.kde.Platform",
-   "runtime-version": "6.9",
+   "runtime-version": "6.10",
    "sdk": "org.kde.Sdk",
    "base": "io.qt.qtwebengine.BaseApp",
-   "base-version": "6.9",
+   "base-version": "6.10",
    "command": "kiview",
    "finish-args": [
       "--share=ipc",
@@ -44,13 +44,8 @@
          "sources": [
             {
                "type": "archive",
-               "url": "https://gitlab.com/bgermann/unrar-free/-/archive/0.3.2/unrar-free-0.3.2.tar.gz",
-               "sha256": "1dd3a090d44e4ca8dfb052516fbf05ca613e7223c3645043110dafb01cd68a78",
-               "x-checker-data": {
-                  "type": "anitya",
-                  "project-id": 243110,
-                  "url-template": "https://gitlab.com/bgermann/unrar-free/-/archive/$version/unrar-free-$version.tar.gz"
-               }
+               "url": "https://gitlab.com/bgermann/unrar-free/-/archive/0.3.3/unrar-free-0.3.3.tar.gz",
+               "sha256": "e0d52bded7863b81cbc4313929d0ad2e4d2e449bf96c85b436658eda02c506a7"
             },
             {
                "type": "script",
@@ -141,8 +136,8 @@
          "sources": [
             {
                "type": "file",
-               "url": "https://appimages.libreitalia.org/LibreOffice-25.2.5.2.basic-x86_64.AppImage",
-               "sha256": "bf724fd6ffff416bc8e210075a0b500509be89426d8c65528408bc29dea3e09d",
+               "url": "https://appimages.libreitalia.org/LibreOffice-25.8.4.2.basic-x86_64.AppImage",
+               "sha256": "e267119129393ff5c6485bd76a7b01f57ee3e54beae268ba3181af44bbfc041e",
                "dest-filename": "LibreOffice.AppImage",
                "only-arches": [
                   "x86_64"
