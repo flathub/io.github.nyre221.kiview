@@ -27,7 +27,7 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://github.com/Nyre221/Kiview.git",
+                    "url": "https://invent.kde.org/danagost/Kiview.git",
                     "commit": "e5d958eb21eab7cafafb2f526f951df38cf157c6"
                 },
                 {
